@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 200px;
+}
+
+.meal {
+  margin: 10px;
+  text-align: center;
+}
+
+.meal img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.meal h3 {
+  margin-top: 5px;
+  font-size: 18px;
+  color: rgb(93, 77, 107);
+}

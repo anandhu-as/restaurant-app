@@ -1,0 +1,21 @@
+.home h2 {
+  padding-top: 100px;
+}
+.banner img {
+  width: 800px;
+  height: 500px;
+}
+.banner {
+  display: flex;
+  justify-content: center;
+}
+
+.intro-video {
+  padding-top: 70px;
+  display: flex;
+  justify-content: center;
+}
+p {
+  padding: 100px;
+  font-size: 18px;
+}

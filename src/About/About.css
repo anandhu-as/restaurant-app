@@ -1,0 +1,13 @@
+h1 {
+  padding-top: 100px;
+  text-align: center;
+}
+p {
+padding: 20px;
+}
+video {
+  width: 800px;
+  height: auto;
+  border: none;
+  margin-left: 370px;
+}
