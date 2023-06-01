@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../Meals/Meal.css";
+import MealContext from "./MealContext";
+import { MealInfo } from "./MealInfo";
 const Meal = () => {
   const [meals, setMeals] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,49 +24,34 @@ const Meal = () => {
 
   const getMeal = (meal) => setSelectedFood(meal);
   return (
-    <div>
-      {selectedFood && (
-        <div className="info">
-          <MealInfo
-            name={selectedFood.name}
-            img={selectedFood.img}
-            desc={selectedFood.desc}
-            category={selectedFood.category}
-            trailer={selectedFood.trailer}
-          />
-        </div>
-      )}
-      {loading ? (
-        <div className="loader">
-          <div className="justify-content-center jimu-primary-loading"></div>
-        </div>
-      ) : (
-        <div className="container">
-          {meals.map((meal) => (
-            <div className="meal" key={meal.name} onClick={() => getMeal(meal)}>
-              <img src={meal.img} alt={meal.name} />
-              <h3>{meal.name}</h3>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
-const MealInfo = ({ name, img, desc, trailer, category }) => {
-  return (
-    <>
-      <img src={img} alt="" className="infoImg" />
-      <iframe
-        className="youtube"
-        width="560"
-        height="315"
-        src={`https://www.youtube.com/embed/${trailer.slice(-11)}`}
-      ></iframe>
-      <h2>{name}</h2>
-      <h2>{category}</h2>
-      <p>{desc}</p>
-    </>
+    //selectedFood value from the Meal component is provided to the MealContext.Provider
+    <MealContext.Provider value={selectedFood}>
+      <div>
+        {selectedFood && (
+          <div className="info">
+            <MealInfo />
+          </div>
+        )}
+        {loading ? (
+          <div className="loader">
+            <div className="justify-content-center jimu-primary-loading"></div>
+          </div>
+        ) : (
+          <div className="container">
+            {meals.map((meal) => (
+              <div
+                className="meal"
+                key={meal.name}
+                onClick={() => getMeal(meal)}
+              >
+                <img src={meal.img} alt={meal.name} />
+                <h3>{meal.name}</h3>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </MealContext.Provider>
   );
 };
 
