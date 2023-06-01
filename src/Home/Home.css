@@ -20,12 +20,14 @@ p {
   font-size: 18px;
 }
 
-.foods-title{
+.foods-title {
   text-align: center;
 }
-.foods{
+.foods {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  
+}
+.foods img {
+  padding-top: 100px;
 }

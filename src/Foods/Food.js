@@ -1,5 +1,29 @@
 const menu = [
   {
+    title: "Baked Chicken Leg",
+    price: 10.88,
+    img:
+      "https://www.wholesomeyum.com/wp-content/uploads/2022/01/wholesomeyum-Baked-Chicken-Leg-Quarters-Recipe-9.jpg",
+  },
+  {
+    id: 9,
+    title: "Grilled Chicken",
+    category: "meal",
+    price: 10.99,
+    img:
+      "https://assets.epicurious.com/photos/62f16ed5fe4be95d5a460eed/3:2/w_6948,h_4632,c_limit/RoastChicken_RECIPE_080420_37993.jpg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
+  {
+    id: 9,
+    title: "Chicken Thighs",
+    category: "shakes",
+    price: 16.99,
+    img:
+      "https://tastefullygrace.com/wp-content/uploads/2023/02/How-Long-to-Bake-Chicken-Thighs-Recipe-1-scaled.jpg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
+  {
     id: 1,
     title: "buttermilk pancakes",
     category: "breakfast",
@@ -80,5 +104,6 @@ const menu = [
       "https://raw.githubusercontent.com/john-smilga/react-projects/master/05-menu/setup/public/images/item-9.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
+  ,
 ];
 export default menu;

@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../Home/Home.css";
 import menu from "../Foods/Food";
 const Home = () => {
+  const [food, setFood] = useState([]);
   return (
     <>
+      <div className="foods">
+        {menu.map((items) => (
+          <div className="meal">
+            <img src={items.img} alt="" />
+            <h3>
+              {items.title} ${items.price}
+            </h3>
+          </div>
+        ))}
+      </div>
       <div className="home">
         <h1>los pollos hermanos</h1>
         <p>
@@ -46,16 +57,27 @@ const Home = () => {
         is always cooking." ("Hermanos") Los Pollos Hermanos advertised its
         chicken as "slow-cooked to perfection... one taste, and you'll know."
       </p>
-      <h2 className="foods-title">Our Foods</h2>
+      <h1>SeaFoods</h1>
+      {useEffect(() => {
+        fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
+          .then((res) => res.json())
+          .then((data) => {
+            const datas = data.meals.map((seafood) => ({
+              img: seafood.strMealThumb,
+              name: seafood.strMeal,
+            }));
+            setFood(datas);
+          });
+      }, [])}
       <div className="foods">
-        {menu.map((items) => (
-          <div className="meal">
-            <img src={items.img} alt="" />
-            <h3>
-              {items.title} ${items.price}
-            </h3>
-          </div>
-        ))}
+        {food.map((seafoods) => {
+          return (
+            <div className="meal">
+              <img src={seafoods.img} alt="" />
+              <h3>{seafoods.name}</h3>
+            </div>
+          );
+        })}
       </div>
     </>
   );
