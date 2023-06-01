@@ -14,7 +14,8 @@
 }
 .navBar img {
   width: 80px;
-  margin-right: 400px;
+  margin-right: 400px; 
+  cursor: pointer;
 }
 .navBar a {
   text-decoration: none;
