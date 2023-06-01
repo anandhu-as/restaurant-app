@@ -1,5 +1,6 @@
 import React from "react";
 import "../Home/Home.css";
+import menu from "../Foods/Food";
 const Home = () => {
   return (
     <>
@@ -45,6 +46,17 @@ const Home = () => {
         is always cooking." ("Hermanos") Los Pollos Hermanos advertised its
         chicken as "slow-cooked to perfection... one taste, and you'll know."
       </p>
+      <h2 className="foods-title">Our Foods</h2>
+      <div className="foods">
+        {menu.map((items) => (
+          <div className="meal">
+            <img src={items.img} alt="" />
+            <h3>
+              {items.title} ${items.price}
+            </h3>
+          </div>
+        ))}
+      </div>
     </>
   );
 };

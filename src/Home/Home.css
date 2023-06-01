@@ -19,3 +19,13 @@ p {
   padding: 100px;
   font-size: 18px;
 }
+
+.foods-title{
+  text-align: center;
+}
+.foods{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}

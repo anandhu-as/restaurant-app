@@ -15,7 +15,7 @@
   height: 200px;
   object-fit: cover;
   border-radius: 5px;
-  cursor: pointer;
+  
 }
 
 .meal h3 {
@@ -23,3 +23,4 @@
   font-size: 18px;
   color: rgb(93, 77, 107);
 }
+
