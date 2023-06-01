@@ -23,7 +23,6 @@ const About = () => {
         numerous occasions as a real-life pop-up restaurant. The real life
         restaurant serves the same menu items as in the show
       </p>
-      
     </>
   );
 };

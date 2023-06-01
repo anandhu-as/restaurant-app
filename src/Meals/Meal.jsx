@@ -11,18 +11,19 @@ function Meal() {
     fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=c")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.meals[0]);
         const mealNames = data.meals.map((meal) => ({
           img: meal.strMealThumb,
           name: meal.strMeal,
           desc: meal.strInstructions,
+          trailer: meal.strYoutube,
+          Category: meal.strCategory,
         }));
         setMeals(mealNames);
         setLoading(false);
       });
   }, []);
 
-  const handleMealClick = (meal) => setSelectedFood(meal);
+  const getMeal = (meal) => setSelectedFood(meal);
 
   return (
     <div>
@@ -32,6 +33,8 @@ function Meal() {
             name={selectedFood.name}
             img={selectedFood.img}
             desc={selectedFood.desc}
+            Category={selectedFood.Category}
+            trailer={selectedFood.trailer}
           />
         </div>
       )}
@@ -45,7 +48,7 @@ function Meal() {
             <div
               className="meal"
               key={meal.name}
-              onClick={() => handleMealClick(meal)}
+              onClick={() => getMeal(meal)}
             >
               <img src={meal.img} alt={meal.name} />
               <h3>{meal.name}</h3>
