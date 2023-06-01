@@ -103,3 +103,12 @@
     height: 40px;
   }
 }
+.info {
+  background-color: #fff;
+  padding: 90px;
+  margin-top: 20px;
+}
+.infoImg {
+  width: 300px;
+  height: auto;
+}
