@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer, useState } from "react";
 import "../Home/Home.css";
 import menu from "../Foods/Food";
+import URL from "../Urls/url";
 const reducer = (state, action) => {
   switch (action.type) {
     case "SET_FOOD":
@@ -68,7 +69,7 @@ const Home = () => {
       </p>
       <h1>SeaFoods</h1>
       {useEffect(() => {
-        fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
+        fetch(URL[0])
           .then((res) => res.json())
           .then((data) => {
             const datas = data.meals.map((seafood) => ({

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useReducer } from "react";
 import "../Meals/Meal.css";
 import MealContext from "./MealContext";
 import { MealInfo } from "./MealInfo";
+import URL from "../Urls/url";
 const mealReducer = (state, action) => {
   switch (action.type) {
     case "SET_MEALS":
@@ -10,10 +11,11 @@ const mealReducer = (state, action) => {
         loading: false,
         meals: action.payload,
       };
-      case "SELECTED_FOOD": return{
-        ...state ,
-        selectedFood:action.playload
-      }
+    case "SELECTED_FOOD":
+      return {
+        ...state,
+        selectedFood: action.playload,
+      };
   }
 };
 const Meal = () => {
@@ -25,7 +27,7 @@ const Meal = () => {
   const [state, dispatch] = useReducer(mealReducer, initialState);
   const { loading, meals, selectedFood } = state;
   useEffect(() => {
-    fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=c")
+    fetch(URL[1])
       .then((res) => res.json())
       .then((data) => {
         const mealNames = data.meals.map((meal) => ({
@@ -40,7 +42,7 @@ const Meal = () => {
       });
   }, []);
 
-  const getMeal = (meal) =>dispatch({type:"SELECTED_FOOD",playload:meal})
+  const getMeal = (meal) => dispatch({ type: "SELECTED_FOOD", playload: meal });
   return (
     //selectedFood value from the Meal component is provided to the MealContext.Provider
     <MealContext.Provider value={selectedFood}>
