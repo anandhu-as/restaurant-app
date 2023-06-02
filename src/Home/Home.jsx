@@ -25,6 +25,7 @@ const Home = () => {
           </div>
         ))}
       </div>
+      
       <div className="home">
         <h1>los pollos hermanos</h1>
         <p>

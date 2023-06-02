@@ -3,6 +3,7 @@ import "../Meals/Meal.css";
 import MealContext from "./MealContext";
 import { MealInfo } from "./MealInfo";
 import URL from "../Urls/url";
+
 const mealReducer = (state, action) => {
   switch (action.type) {
     case "SET_MEALS":
@@ -38,7 +39,6 @@ const Meal = () => {
           category: meal.strCategory,
         }));
         dispatch({ type: "SET_MEALS", payload: mealNames });
-        setLoading(false);
       });
   }, []);
 
@@ -47,10 +47,12 @@ const Meal = () => {
     //selectedFood value from the Meal component is provided to the MealContext.Provider
     <MealContext.Provider value={selectedFood}>
       <div>
-        {selectedFood && (
+        {selectedFood ? (
           <div className="info">
             <MealInfo />
           </div>
+        ) : (
+          false
         )}
         {loading ? (
           <div className="loader">
