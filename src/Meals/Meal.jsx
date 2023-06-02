@@ -1,11 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import "../Meals/Meal.css";
 import MealContext from "./MealContext";
 import { MealInfo } from "./MealInfo";
+const mealReducer = (state, action) => {
+  switch (action.type) {
+    case "SET_MEALS":
+      return {
+        ...state,
+        loading: false,
+        meals: action.payload,
+      };
+      case "SELECTED_FOOD": return{
+        ...state ,
+        selectedFood:action.playload
+      }
+  }
+};
 const Meal = () => {
-  const [meals, setMeals] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedFood, setSelectedFood] = useState(null);
+  const initialState = {
+    loading: true,
+    meals: [],
+    selectedFood: null,
+  };
+  const [state, dispatch] = useReducer(mealReducer, initialState);
+  const { loading, meals, selectedFood } = state;
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=c")
       .then((res) => res.json())
@@ -17,12 +35,12 @@ const Meal = () => {
           trailer: meal.strYoutube,
           category: meal.strCategory,
         }));
-        setMeals(mealNames);
+        dispatch({ type: "SET_MEALS", payload: mealNames });
         setLoading(false);
       });
   }, []);
 
-  const getMeal = (meal) => setSelectedFood(meal);
+  const getMeal = (meal) =>dispatch({type:"SELECTED_FOOD",playload:meal})
   return (
     //selectedFood value from the Meal component is provided to the MealContext.Provider
     <MealContext.Provider value={selectedFood}>

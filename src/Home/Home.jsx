@@ -1,8 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import "../Home/Home.css";
 import menu from "../Foods/Food";
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "SET_FOOD":
+      return action.payload;
+    default:
+      state;
+  }
+};
 const Home = () => {
-  const [food, setFood] = useState([]);
+  const [food, dispatch] = useReducer(reducer, []);
+
   return (
     <>
       <div className="foods">
@@ -66,7 +75,7 @@ const Home = () => {
               img: seafood.strMealThumb,
               name: seafood.strMeal,
             }));
-            setFood(datas);
+            dispatch({ type: "SET_FOOD", payload: datas });
           });
       }, [])}
       <div className="foods">
