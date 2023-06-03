@@ -23,6 +23,12 @@ const About = () => {
         numerous occasions as a real-life pop-up restaurant. The real life
         restaurant serves the same menu items as in the show
       </p>
+      <footer>
+        @anandhu-as{" "}
+        <a href="https://github.com/anandhu-as?tab=overview&from=2023-06-01&to=2023-06-03">
+          <i class="fa fa-github"></i>
+        </a>
+      </footer>
     </>
   );
 };

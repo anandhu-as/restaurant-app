@@ -3,7 +3,6 @@ import "../Meals/Meal.css";
 import MealContext from "./MealContext";
 import { MealInfo } from "./MealInfo";
 import URL from "../Urls/url";
-
 const mealReducer = (state, action) => {
   switch (action.type) {
     case "SET_MEALS":
