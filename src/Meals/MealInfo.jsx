@@ -1,8 +1,14 @@
 import React, { useContext } from "react";
 import MealContext from "./MealContext";
-export const MealInfo = () => {
+
+export const MealInfo = React.memo(() => {
   const selectedFood = useContext(MealContext);
   const { name, img, desc, trailer, category } = selectedFood;
+
+  if (!selectedFood) {
+    return <p>No meal selected.</p>;
+  }
+
   return (
     <>
       <img src={img} alt="" className="infoImg" />
@@ -17,4 +23,4 @@ export const MealInfo = () => {
       <p className="desc">{desc}</p>
     </>
   );
-};
+});

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, useCallback } from "react";
 import "../Meals/Meal.css";
 import MealContext from "./MealContext";
 import { MealInfo } from "./MealInfo";
@@ -42,7 +42,11 @@ const Meal = () => {
       });
   }, []);
 
-  const getMeal = (meal) => dispatch({ type: "SELECTED_FOOD", playload: meal });
+  const getMeal = useCallback(
+    //by using callback we can prevent unnecessary re-renders
+    (meal) => dispatch({ type: "SELECTED_FOOD", playload: meal }),
+    []
+  );
   return (
     //selectedFood value from the Meal component is provided to the MealContext.Provider
     <MealContext.Provider value={selectedFood}>
